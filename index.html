@@ -7,8 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --card-w: 630px; /* 3.5 inch */
-    --card-h: 990px; /* 6.5 inch */
+    --card-w: 267px; /* 2.1 inch */
+    --card-h: 405px; /* 3.37 inch */
     --mint: #9fead6;
     --dark-gray: #6f6f6f;
     --text: #111;
@@ -23,14 +23,14 @@
     min-height:100vh;
     margin:0;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
   }
   .card{
     width: var(--card-w);
     height: var(--card-h);
     background:#fff;
-    border-radius:18px;
-    box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+    border-radius:12px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
     overflow:hidden;
     display: flex;
     flex-direction: column;
@@ -38,98 +38,97 @@
   }
   .header{
     background:var(--mint);
-    padding:22px 16px;
+    padding:6px;
     text-align:center;
     font-weight:700;
-    letter-spacing:1px;
-    color: #0b0b0b;
-    font-size:32px;
+    letter-spacing:0.5px;
+    color:#0b0b0b;
+    font-size:12px;
   }
   .main{
     display:flex;
-    padding:26px;
-    gap:26px;
+    padding:8px;
+    gap:6px;
     flex: 1;
   }
   .left{
-    width:44%;
+    width:40%;
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:20px;
+    gap:6px;
   }
   .photo-wrap{
     width:100%;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:10px;
-    border-radius:6px;
     background:#f7f7f7;
+    border-radius:4px;
+    padding:2px;
   }
   .photo{
     width:100%;
-    max-width:200px;
-    height:240px;
+    max-width:70px;
+    height:80px;
     object-fit:cover;
-    border:8px solid #f0f0f0;
-    border-radius:6px;
+    border:3px solid #f0f0f0;
+    border-radius:4px;
   }
-  .barcode img { max-width: 260px; height: 60px; object-fit: contain; }
+  .barcode img { max-width:90px; height:22px; object-fit: contain; }
 
   .right{
-    width:56%;
+    width:60%;
     display:flex;
     flex-direction:column;
     justify-content:flex-start;
-    gap:10px;
+    gap:2px;
   }
-  .detail-line{ font-size:14px; color:var(--muted); }
-  .detail-value{ font-weight:700; color:var(--text); margin-bottom:10px; font-size:22px; }
-  .small{ font-size:18px; color:var(--muted); }
+  .detail-line{ font-size:8px; color:var(--muted); }
+  .detail-value{ font-weight:700; color:var(--text); margin-bottom:3px; font-size:10px; }
+  .small{ font-size:9px; color:var(--muted); }
 
   .bottom{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 28px 14px 28px;
-    gap:20px;
-    margin-top:20px;
+    padding:0 8px 6px 8px;
+    gap:6px;
+    margin-top:2px;
     position: relative;
   }
-  .company{ display:flex; flex-direction:column; align-items:center; gap:10px; width:50%; }
-  .logo { width:100px; height:72px; object-fit: contain; }
-  .company-name{ font-weight:700; font-size:20px; text-align:center; color:var(--text); }
-  .qr-wrap img { width:140px; height:140px; object-fit: contain; }
+  .company{ display:flex; flex-direction:column; align-items:center; gap:4px; width:50%; }
+  .logo { width:36px; height:28px; object-fit: contain; }
+  .company-name{ font-weight:700; font-size:8px; text-align:center; color:var(--text); line-height:1.1; }
+  .qr-wrap img { width:40px; height:40px; object-fit: contain; }
   .bottom::after {
     content: "";
     position: absolute;
-    top: 20px;
-    bottom: 20px;
+    top: 8px;
+    bottom: 8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 2px;
+    width: 1px;
     background-color: #bbb;
-    height: 100px;
   }
   .footer-header {
     background: #d0f0e8;
-    padding: 16px 0;
+    padding: 4px 0;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 8px;
     color:var(--text);
     text-align: center;
     border-top: 1px solid #9fead6;
-    border-radius: 0 0 18px 18px;
+    border-radius: 0 0 12px 12px;
   }
   #downloadBtn {
-    padding: 12px 20px;
-    font-size: 16px;
+    padding: 8px 14px;
+    font-size: 12px;
     font-weight: bold;
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
   }
   #downloadBtn:hover { background-color: #45a049; }
