@@ -94,10 +94,16 @@ body {
 
 .qr img { max-width: 0.65in; }
 
-/* ================= BACK SIDE ================= */
+/* ================= BACK SIDE (UPDATED) ================= */
 
 .back-body {
+  height: calc(85.6mm - 1.1in);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 0.14in;
+  text-align: center;
   font-size: .1in;
 }
 
@@ -115,19 +121,13 @@ body {
   margin-top: 2px;
 }
 
-/* Signature Area */
-.signature {
-  margin-top: 0.25in;
-  text-align: center;
+/* Back Barcode */
+.back-barcode {
+  margin-top: 0.18in;
 }
-.signature .line {
-  border-top: 1px solid #000;
-  margin: 0.25in auto 4px;
-  width: 1.2in;
-}
-.signature span {
-  font-size: .085in;
-  font-weight: bold;
+.back-barcode img {
+  max-width: 1.2in;
+  max-height: 0.35in;
 }
 
 /* Print */
@@ -182,7 +182,7 @@ body {
 
     <div class="bottom">
       <div class="company">
-        <img src="4rlogo.png">
+        <img src="logo.png">
         <div class="name">Toma Construction & Co. LTD</div>
       </div>
       <div class="divider"></div>
@@ -225,9 +225,9 @@ body {
       <div class="back-value">+880 18XXXXXXXX</div>
     </div>
 
-    <div class="signature">
-      <div class="line"></div>
-      <span>Authorized Signature</span>
+    <!-- Back Side Barcode -->
+    <div class="back-barcode">
+      <img src="barcode.png" alt="Back Barcode">
     </div>
   </div>
 
