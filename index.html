@@ -1,216 +1,243 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Employee ID Card</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --card-w: 267px; /* 2.1 inch */
-    --card-h: 405px; /* 3.37 inch */
-    --mint: #9fead6;
-    --dark-gray: #6f6f6f;
-    --text: #111;
-    --muted: #666;
-  }
-  body{
-    background:#efefef;
-    font-family: 'Montserrat', Arial, sans-serif;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    min-height:100vh;
-    margin:0;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .card{
-    width: var(--card-w);
-    height: var(--card-h);
-    background:#fff;
-    border-radius:12px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-    overflow:hidden;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-  .header{
-    background:var(--mint);
-    padding:6px;
-    text-align:center;
-    font-weight:700;
-    letter-spacing:0.5px;
-    color:#0b0b0b;
-    font-size:12px;
-  }
-  .main{
-    display:flex;
-    padding:8px;
-    gap:6px;
-    flex: 1;
-  }
-  .left{
-    width:40%;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:6px;
-  }
-  .photo-wrap{
-    width:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#f7f7f7;
-    border-radius:4px;
-    padding:2px;
-  }
-  .photo{
-    width:100%;
-    max-width:70px;
-    height:80px;
-    object-fit:cover;
-    border:3px solid #f0f0f0;
-    border-radius:4px;
-  }
-  .barcode img { max-width:90px; height:22px; object-fit: contain; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  margin: 0;
+  background:#f0f3f7;
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  justify-content:center;
+  padding:20px;
+  font-family: Arial, sans-serif;
+}
 
-  .right{
-    width:60%;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
-    gap:2px;
-  }
-  .detail-line{ font-size:8px; color:var(--muted); }
-  .detail-value{ font-weight:700; color:var(--text); margin-bottom:3px; font-size:10px; }
-  .small{ font-size:9px; color:var(--muted); }
+/* ===== Common Card Style ===== */
+.card {
+  width: 54mm;
+  height: 85.6mm;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  border-left: 0.8mm solid #89c5ff;
+  border-right: 0.8mm solid #89c5ff;
+}
 
-  .bottom{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 8px 6px 8px;
-    gap:6px;
-    margin-top:2px;
-    position: relative;
-  }
-  .company{ display:flex; flex-direction:column; align-items:center; gap:4px; width:50%; }
-  .logo { width:36px; height:28px; object-fit: contain; }
-  .company-name{ font-weight:700; font-size:8px; text-align:center; color:var(--text); line-height:1.1; }
-  .qr-wrap img { width:40px; height:40px; object-fit: contain; }
-  .bottom::after {
-    content: "";
-    position: absolute;
-    top: 8px;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1px;
-    background-color: #bbb;
-  }
-  .footer-header {
-    background: #d0f0e8;
-    padding: 4px 0;
-    font-weight: 700;
-    font-size: 8px;
-    color:var(--text);
-    text-align: center;
-    border-top: 1px solid #9fead6;
-    border-radius: 0 0 12px 12px;
-  }
-  #downloadBtn {
-    padding: 8px 14px;
-    font-size: 12px;
-    font-weight: bold;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  #downloadBtn:hover { background-color: #45a049; }
+/* Header & Footer */
+.header {
+  background: #bff0df;
+  padding: 0.12in;
+  text-align: center;
+  font-weight: bold;
+  font-size: .18in;
+}
+
+.footer {
+  position:absolute;
+  left:0; right:0; bottom:0;
+  background:#bff0df;
+  padding: 0.07in;
+  text-align:center;
+  font-size: .09in;
+  font-weight:bold;
+}
+
+/* ================= FRONT SIDE ================= */
+
+.body { padding: 0.10in 0.14in 0.12in; }
+
+.grid {
+  display:grid;
+  grid-template-columns: 0.9in 1fr;
+  gap: 0.08in;
+}
+
+.photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: #EAEAEA;
+  padding: 6px 3px;
+}
+.photo img { width:100%; height:100%; object-fit:cover; }
+
+.barcode { margin-top: 0.04in; }
+.barcode img { max-width: 1.0in; max-height: 0.3in; }
+
+.label { font-size: .08in; color:#555; }
+.value { font-size: .11in; font-weight: bold; }
+
+.pair { margin: .035in 0; }
+
+.bottom {
+  margin-top: 0.08in;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.company { text-align:center; width: 1.0in; }
+.company img { max-width: 0.6in; }
+.company .name { font-size: .095in; font-weight: bold; }
+
+.divider {
+  width: 1px;
+  background: #ccc;
+  height: 0.75in;
+}
+
+.qr img { max-width: 0.65in; }
+
+/* ================= BACK SIDE ================= */
+
+.back-body {
+  padding: 0.14in;
+  font-size: .1in;
+}
+
+.back-pair {
+  margin-bottom: 0.06in;
+}
+
+.back-label {
+  font-weight: bold;
+  font-size: .09in;
+}
+
+.back-value {
+  font-size: .1in;
+  margin-top: 2px;
+}
+
+/* Signature Area */
+.signature {
+  margin-top: 0.25in;
+  text-align: center;
+}
+.signature .line {
+  border-top: 1px solid #000;
+  margin: 0.25in auto 4px;
+  width: 1.2in;
+}
+.signature span {
+  font-size: .085in;
+  font-weight: bold;
+}
+
+/* Print */
+@page { size: 54mm 85.6mm; margin: 0; }
+@media print {
+  body { background: transparent; padding:0; }
+  .controls { display:none; }
+}
 </style>
 </head>
+
 <body>
 
-<button id="downloadBtn">PDF Download</button>
-
-<div class="card" id="idCard">
+<!-- ================= FRONT CARD ================= -->
+<div class="card">
   <div class="header">EMPLOYEE ID CARD</div>
 
-  <div class="main">
-    <div class="left">
-      <div class="photo-wrap">
-        <img class="photo" src="profile.jpg" alt="Profile photo">
+  <div class="body">
+    <div class="grid">
+      <div>
+        <div class="photo">
+          <img src="photo.jpg">
+        </div>
+        <div class="barcode">
+          <img src="barcode.png">
+        </div>
       </div>
-      <div class="barcode">
-        <img src="barcode.png" alt="Barcode Image">
+
+      <div>
+        <div class="pair">
+          <div class="label">Name:</div>
+          <div class="value">MD Rahim Mia</div>
+        </div>
+        <div class="pair">
+          <div class="label">Designation:</div>
+          <div class="value">Excavator Operator</div>
+        </div>
+        <div class="pair">
+          <div class="label">Joined:</div>
+          <div class="value">19 July 2022</div>
+        </div>
+        <div class="pair">
+          <div class="label">Employee No:</div>
+          <div class="value">110-42</div>
+        </div>
+        <div class="pair">
+          <div class="label">Expiry:</div>
+          <div class="value">18 July 2023</div>
+        </div>
       </div>
     </div>
 
-    <div class="right">
-      <div class="detail-line">Name:</div>
-      <div class="detail-value">MD Rahim Mia</div>
-
-      <div class="detail-line">Designation:</div>
-      <div class="detail-value">Excavator Operator</div>
-
-      <div class="detail-line">Joined:</div>
-      <div class="detail-value">12th July 2022</div>
-
-      <div class="detail-line">Employee Number:</div>
-      <div class="detail-value">3480-65</div>
-
-      <div class="detail-line">Expiry:</div>
-      <div class="detail-value small">30th Sep 2024</div>
+    <div class="bottom">
+      <div class="company">
+        <img src="logo.png">
+        <div class="name">Toma Construction & Co. LTD</div>
+      </div>
+      <div class="divider"></div>
+      <div class="qr">
+        <img src="qrcode.png">
+      </div>
     </div>
   </div>
 
-  <div class="bottom">
-    <div class="company">
-      <img class="logo" src="company-logo.png" alt="Company Logo">
-      <div class="company-name">Toma Construction<br/>& Co. LTD</div>
-    </div>
-    <div class="qr-wrap">
-      <img src="qrcode.png" alt="QR Code">
-    </div>
-  </div>
-
-  <div class="footer-header">www.tomagroupbd.com</div>
+  <div class="footer">www.tomagroupbd.com</div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- ================= BACK CARD ================= -->
+<div class="card">
+  <div class="header">IDENTITY INFORMATION</div>
 
-<script>
-document.getElementById("downloadBtn").addEventListener("click", async function() {
-  const { jsPDF } = window.jspdf;
-  const card = document.getElementById("idCard");
+  <div class="back-body">
+    <div class="back-pair">
+      <div class="back-label">Address:</div>
+      <div class="back-value">Village: Mirpur, Dhaka, Bangladesh</div>
+    </div>
 
-  this.style.display = 'none';
+    <div class="back-pair">
+      <div class="back-label">Post Code:</div>
+      <div class="back-value">1216</div>
+    </div>
 
-  const canvas = await html2canvas(card, { scale: 4 });
-  const imgData = canvas.toDataURL("image/png");
+    <div class="back-pair">
+      <div class="back-label">Blood Group:</div>
+      <div class="back-value">O+</div>
+    </div>
 
-  const pdf = new jsPDF({ orientation: "portrait", unit: "px", format: "a4" });
-  const pageWidth = pdf.internal.pageSize.getWidth();
-  const pageHeight = pdf.internal.pageSize.getHeight();
+    <div class="back-pair">
+      <div class="back-label">Phone:</div>
+      <div class="back-value">+880 17XXXXXXXX</div>
+    </div>
 
-  const cardWidth = card.offsetWidth;
-  const cardHeight = card.offsetHeight;
+    <div class="back-pair">
+      <div class="back-label">Emergency Contact:</div>
+      <div class="back-value">+880 18XXXXXXXX</div>
+    </div>
 
-  const x = (pageWidth - cardWidth) / 2;
-  const y = (pageHeight - cardHeight) / 2;
+    <div class="signature">
+      <div class="line"></div>
+      <span>Authorized Signature</span>
+    </div>
+  </div>
 
-  pdf.addImage(imgData, "PNG", x, y, cardWidth, cardHeight);
-  pdf.save("employee-id-card.pdf");
+  <div class="footer">If found please return to office</div>
+</div>
 
-  this.style.display = 'inline-block';
-});
-</script>
+<!-- Download Button -->
+<div class="controls">
+  <button onclick="window.print()">Download PDF</button>
+</div>
 
 </body>
 </html>
